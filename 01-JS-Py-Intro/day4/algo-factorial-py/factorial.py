@@ -1,6 +1,9 @@
 def factorial(num):
-	# your code here
-	pass
+    if num <= 1:
+        return num
+    else:
+        return num * factorial(num - 1)
+print(factorial(45))
 
 
 
@@ -12,13 +15,13 @@ def factorial(num):
 # Example
 # factorial(4) # => 24 (4 * 3 * 2 * 1)
 
-def factorial(num):
+# def factorial(num):
     
-    if num <= 1:
-        return num
-    else:
-        return num * factorial(num - 1)
-print(factorial(5))
+#     if num <= 1:
+#         return num
+#     else:
+#         return num * factorial(num - 1)
+# print(factorial(5))
 
 #Take num multiply it by num -1
 # !5 = 120

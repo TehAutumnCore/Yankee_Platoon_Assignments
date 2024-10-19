@@ -1,6 +1,27 @@
 def fibonacci(n):
-  pass
+  #base case - when to stop
+    if n <= 1:
+      return n
+    else:
+      return fibonacci(n-1) + fibonacci(n-2)
+print(fibonacci(20))
 
+
+  #      F(n)=f(n-1)+f(n-2)
+  #        n = (n-1) + (n-2)
+  #        1 = (1-1) + (1-2)
+  #        2 = (2-1) + (2-2)
+  #        2 = (3-1) + (3-2)
+  #        f0 = 0
+  #        f1 = 1  
+  #        f2 = 0  +  1 = 1
+  #        f3 = 1  +  1 = 2
+  #        f4 = 2  +  1 = 3
+  #        f5 = 3  +  2 = 5
+  #        f6 = 5  +  3 = 8
+  #
+  # print(n)
+# fibonacci(5)
 
 # One of the most popular coding challenges is to write an algorithm to return the n-th element in the Fibonacci sequence. 
 # Officially, the Fibonacci sequence is the integer sequence defined by the recurrence relation: 
@@ -18,6 +39,3 @@ def fibonacci(n):
 
 # find_fibonacci(3) -> 2
 # find_fibonacci(7) -> 13
-
-def find_fibonacci():
-    pass

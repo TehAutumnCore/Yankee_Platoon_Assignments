@@ -10,7 +10,7 @@ Your program should return true for all the following examples...
 is_anagram('charm', 'march')
 is_anagram('CharM', 'mARcH')
 is_anagram('abcde2', 'c2abed')
-```
+```             
 ### Remember
 Run your test specs early and often. Also, if you come across a scenario that isn't included in your test suite, then you should absolutely add it!
 

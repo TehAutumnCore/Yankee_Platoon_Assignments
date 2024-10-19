@@ -1,0 +1,23 @@
+from student import Student
+
+print(Student)
+
+Student.id_counter += 1
+print(f"Student.id_counter is {Student.id_counter}")
+alice=Student('alice','alice@gmail.com')
+print(f'Student.all_students is {student.all_students}')
+print(f'Student.id_coutner is {Student.id_counter}')
+
+print(f"Student.id is {Student.id}")
+print(f"Student.all_students is {Student.all_students}")
+
+bob=Student('bob','bob@gmail.com')
+print(f"Student.id is {Student.id}")
+
+carol=Student('carol','carol@gmail.com')
+print(f"Student.id is {Student.id}")
+print(f"Student.all_students is {Student.all_students}")
+
+print(alice.id)
+print(bob.id)
+print(carol.id)
