@@ -1,1 +1,19 @@
-/* to show your CSS things, you'll likely need to use this file */
+.navbar > ul {
+    list-style-type: none;
+    /* background-color: black; */
+    display: flex;
+    justify-content: space-around;
+}
+
+body {
+    background-color: aliceblue;
+    color:midnightblue
+}
+
+section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

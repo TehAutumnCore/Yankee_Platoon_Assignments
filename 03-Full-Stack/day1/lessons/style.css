@@ -1,0 +1,27 @@
+
+body {
+    margin: 0;
+}
+div {
+    background-color: gray;
+}
+.box {
+    height: 10vmin;
+    width: 10vmin;
+    background-color: yellow;
+    border: 1px black solid;
+}
+.row {
+    display: flex;
+}
+.box-red {
+    background-color: red;
+}
+#container {
+    padding: 5vmin;
+    border: solid 1vmin purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

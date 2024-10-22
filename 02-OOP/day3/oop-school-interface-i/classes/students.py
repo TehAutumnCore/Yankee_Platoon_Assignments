@@ -15,7 +15,7 @@ class Students:
         with open("../data/students.csv",'r') as student_file:
             ## I want to create dicts from csv lines
             reader = csv.DictReader(student_file) #can iterate through
-            students = [csv(**x) for x in reader]
+            students = [cls(**x) for x in reader]
             return students
             ## Iterate through list of dicts  students = [cls(**x) for x in reader]
             # for row in reader:

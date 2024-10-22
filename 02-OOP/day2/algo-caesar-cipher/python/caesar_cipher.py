@@ -1,23 +1,23 @@
 # alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
 #             "o","p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-# import string #imports the string module
+import string #imports the string module
 
-# alphabet = string.ascii_lowercase #provides a list of a-z in lowercase
+alphabet = string.ascii_lowercase #provides a list of a-z in lowercase
 
-# def caesar_cipher(cipher_string, shift_amount):
-#     answer_list = [] #answer list
-#     for char in cipher_string: #for every character in cipher_string
-#         if char.isalpha(): #checks if the character is an alphabatical letter
-#             shifted_index = (alphabet.index(char.lower()) + shift_amount) % 26 #returns the index of character with .lower() + shift amount) % 26 to get the remainder
-#             #Preserve case - keeps the original capitalization of text
-#             if char.isupper(): #returns true or false if the character is uppercase
-#                 answer_list.append(alphabet[shifted_index].upper()) #appends the new letter grabbed from shifted index and uppercases it
-#             else:
-#                 answer_list.append(alphabet[shifted_index]) #appends the new letter grabbed from the shifted index
-#         else:
-#             answer_list.append(char) #if the character isn't an alphabetical character append to answer_list
-#     print(''.join(answer_list)) #prints the results
-#     return ''.join(answer_list) #returns the results
+def caesar_cipher(cipher_string, shift_amount):
+    answer_list = [] #answer list
+    for char in cipher_string: #for every character in cipher_string
+        if char.isalpha(): #checks if the character is an alphabatical letter
+            shifted_index = (alphabet.index(char.lower()) + shift_amount) % 26 #returns the index of character with .lower() + shift amount) % 26 to get the remainder
+            #Preserve case - keeps the original capitalization of text
+            if char.isupper(): #returns true or false if the character is uppercase
+                answer_list.append(alphabet[shifted_index].upper()) #appends the new letter grabbed from shifted index and uppercases it
+            else:
+                answer_list.append(alphabet[shifted_index]) #appends the new letter grabbed from the shifted index
+        else:
+            answer_list.append(char) #if the character isn't an alphabetical character append to answer_list
+    print(''.join(answer_list)) #prints the results
+    return ''.join(answer_list) #returns the results
 
 
 
@@ -61,7 +61,7 @@ for letter in split_string:
         else:
             answer_list.append(alphabet[shifted]) # The shifted is the new indexOf the original string but it is now shifted by the new index (alpa.) and corresponds to the new indexOf which appends the indexOf (alpha.) to answer_list
     else: #if the letter was not in alphabet
-        answer_list.append(letter)   
+        answer_list.append(letter)
     # print(shifted) 
 
 

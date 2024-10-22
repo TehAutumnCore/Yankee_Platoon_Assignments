@@ -1,42 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="../images/deepdishpizza.jpg">
+    <title>My Top Ten Tags and Styles</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title> My Top Ten Tags & Styles</title>
-  </head>
-  <body>
-    <header title="I'm a Header!">
-      <h1 title="I'm an H1">My Top Ten</h1>
-      <img title="I'm an img" src="http://www.incrediblethings.com/wp-content/uploads/2012/07/cat-votes-for-himself.jpg">
-    </header>
-    <section class="section" title="I'm The HTML Section">
-      <h2 title="I'm an H2">HTML</h2>
-      <p title="I'm a p">Here are a few HTML things I like:</p>
-      <!-- Copy this Definition Div for each HTML thing you choose -->
-      <div class="definition" title="I'm a Definition Div!">
-        <h3>TERM TITLE</h3>
-        <p>Describe this term, and make an example of how its used:</p>
-        <!-- EXAMPLE CODE GOES HERE -->
-      <pre title="i'm a pre tag for code!"> < html > is the opening tag and < / html > is the closing tag.</pre>
-      <a href="#">resource link</a>
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="https://www.linkedin.com/in/gary-rojas-647248160/" target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/TehAutumnCore" target="_blank">Github</a></li>
+                <li><a href="https://www.facebook.com/gary.j.rojas" target="_blank">Facebook</a></li>
+                <li><a href="https://steamcommunity.com/profiles/76561198093140527/" target="_blank">Steam</a></li>
+                <li><a href="https://piratelol.ytmnd.com/" target="_blank">Pirates - Flashing lights warning!</a></li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <div>
+        <header style="text-align: center;">
+            <h1> Welcome to my Top Ten HTML Tags / CSS Styles</h1>
+        </header>
+        <p><a href="https://htmlreference.io/" alt="htmlreference.io" target="_blank">HTML</a></p>
+        <div>
+            <section class="sectionHTML" title="This is my HTML Section">
+                <h3>1. Audio Tag</h3>
+                <p>The audio Tags allows you to embed an audio clip into a web page. You can also provide the tag with
+                    some attributes like controls, autoplay, muted and loop. Controls will give you the ability to
+                    manipulate the audio. Autoplay well, speaks for itself. Muted will have the music muted by default,
+                    while loop will replay the audio once it finishes</p>
+                <!-- <audio controls autoplay loop muted><source src="../audio/Spider-Man 2_ The Game Pizza Theme.mp3" type="audio/ogg"> -->
+                <h3>2. Video Tag</h3>
+                <p>The video Tag will allow you to embed a video clip into a webpage, and much like audio also allows
+                    for attributes such as controls, autoplay, and loop</p>
+                <a target="_blank" href="//en.wikipedia.org/wiki/Sky">
+                    <video width="500px" controls autoplay loop alt="video of the sky">
+                        <source src="../video/The_Sky.mp4" type="video/mp4">
+                    </video></a>
+                <h3>3. Input Tag</h3>
+                <p>The Input tag defines an interactive control within a web form. Some examples would be input type=
+                    "text", "email","number","checkbox","radio","submit","date" and so much more.</p>
+                <ol>
+                    <li><input type="text" placeholder="text"><label for="text">"text"</label><br></li>
+                    <li><input type="email" placeholder="email"><label for="email">"email"</label><br></li>
+                    <li><input type="number" placeholder="number"><label for="number">number</label><br></li>
+                    <li><input type="checkbox" placeholder="checkbox"><label for="checkbox">"checkbox"</label><br></li>
+                    <li><input type="radio" placeholder="radio"><label for="radio">"radio"</label><br></li>
+                    <li><input type="submit" placeholder="submit"><label for="submit">submit</label><br></li>
+                    <li><input type="date" placeholder="date"><label for="date">"date"</label><br></li>
+                </ol>
+                <h3>4. Image Tag</h3>
+                <p>The Img tag defines an image inserted in the webpage</p>
+                <img src="../images/Sakura-Tree.gif" alt="Sakura tree with petals falling" height="250">
+                <h3>5. Link Tag</h3>
+                <p>The link tag defines a link between the current web page and an external link or resource. href</p>
+            </section>
+        </div>
+        <p><a href="https://cssreference.io/" alt="cssreference.io" target="_blank">CSS</a></p>
+        <div>
+            <section class="sectionCSS" title="This is my CSS Section">
+                <h3>1. Border-Color</h3>
+                <p style=" border: solid;
+                    border-color: black;">The first CSS style, I'd like to mention is border color. Accompanied by
+                    border: Solid so that its visible</p>
+                <h3>2. Padding</h3>
+                <p style="border: solid;
+                    padding: 10vw;
+                    ">Next, is padding. There are several options to choose from, but if you do padding, it'll affect
+                    every side equally although you can do padding-left,-right,-top,-bottom but also a couple of more
+                </p>
+                <h3>3. Margin</h3>
+                <p style="border: solid;
+                    margin: 10px;
+                    ">Next is margin. Like padding, where you can default all sides, or can be specific with anyside
+                </p>
+                <h3>4. Text-Align</h3>
+                <p style="text-align: center;">A person favorite of mine, is text-align. Where you can select
+                    text-align: left, right, center and justify </p>
+                <h3>5. Display </h3>
+                <p>Display, allows you to set the display behavior of the element. Some examples include, grid, flexbox,
+                    block, and none. these will allow you give your webpage responsiveness </p>
+            </section>
+        </div>
     </div>
-  </section>
-  <section class="section" title="I'm The CSS Section">
-    <h2 title="I'm an H2">CSS Things</h2>
-    <p title="I'm a p">Here are a few CSS things I like:</p>
-    <!-- Copy this Definition Div for each CSS thing you choose -->
-    <div class="definition" title="I'm a Definition Div!">
-      <h3>TERM TITLE</h3>
-      <p>Describe this term, and make an example of how its used:</p>
-      <!-- EXAMPLE CODE GOES HERE -->
-    <pre title="i'm a pre tag for code!"> < html > is the opening tag and < / html > is the closing tag.</pre>
-    <a href="#">resource link</a>
-  </div>
-</section>
-<footer>
-  <p>Made with gusto by <a href="#">YOUR NAME HERE</a></p>
-</footer>
 </body>
+<footer style="background-color: lightblue;"> Made by Gary</footer>
+
 </html>
