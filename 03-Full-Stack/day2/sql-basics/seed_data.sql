@@ -20,7 +20,6 @@ INSERT INTO classes (id, name, credits) VALUES (3, 'SPAN 210', 3);
 INSERT INTO classes (id, name, credits) VALUES (4, 'PHYS 218', 4);
 INSERT INTO classes (id, name, credits) VALUES (5, 'ART 118', 2);
 
-
 -- Tianna took HIST 107 and got a 'B'
 INSERT INTO enrollments (id, student_id, class_id, grade) VALUES (1, 1, 2, 'B');
 -- Tiana is taking SPAN 210

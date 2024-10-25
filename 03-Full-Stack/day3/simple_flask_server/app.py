@@ -36,6 +36,7 @@ def old_students(): #Returns an array of student objects where the students are 
     # return jsonify(old_students)
 
     old_students = [student for student in students if student['age'] > 20]
+    old_students = [student for student in students if student['age'] > 20 and student['age'] < 22 ]
     return jsonify(old_students)
 
 @app.route("/young_students/",methods=['GET']) 
@@ -76,6 +77,12 @@ def student_names(): #Returns an array of student objects holding only the keys 
         'last_name': student['last_name']
     }for student in students]
     return jsonify(student_names)
+    
+#     @app.route("/student_names/", methods=["GET"])
+# def get_student_names():
+#     student_names = list(map(lambda student: f"{student["first_name"]} {student["last_name"]}", students))
+#     return jsonify(student_names)
+    
     
 @app.route("/student_ages/",methods=['GET'])
 def student_ages():#Returns an array of student objects holding the keys 'student_name' with the value of first and last name, and 'age' with the value of that student's age.
