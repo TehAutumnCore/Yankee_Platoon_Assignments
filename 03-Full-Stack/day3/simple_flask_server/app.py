@@ -1,6 +1,29 @@
 from flask import Flask, jsonify
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask("Server")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql + psycopg://desktop@localhost/school'
+
+db = SQLAlchemy(app)
+
+class Student(db.model):
+    id = db.Column(db.Integer, primary_key = True)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    age = db.Column(db.Integer)
+    grade = db.Column(db.Integer)
+    
+class Subject(db.model):
+    id = db.Column(db.Integer, primary_key = True)
+    subject = db.Column(db.String(50))
+    
+class Teacher(db.model):
+    id = db.Column(db.Integer, primary_key = True)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    age = db.Column(db.Integer)
+    subject = db.Column(db.Integer)
 
 students = [
      {'id': '1', 'first_name': 'John', 'last_name': 'Doe', 'age': 18, 'grade': 'A'},
@@ -14,6 +37,8 @@ students = [
      {'id': '9', 'first_name': 'Ethan', 'last_name': 'Wilson', 'age': 19, 'grade': 'C'},
      {'id': '10', 'first_name': 'Isabella', 'last_name': 'Moore', 'age': 22, 'grade': 'B'}
  ]
+
+
 
 @app.route("/", methods=['GET'])
 def home():
@@ -36,7 +61,7 @@ def old_students(): #Returns an array of student objects where the students are 
     # return jsonify(old_students)
 
     old_students = [student for student in students if student['age'] > 20]
-    old_students = [student for student in students if student['age'] > 20 and student['age'] < 22 ]
+    # old_students = [student for student in students if student['age'] > 20 and student['age'] < 22 ]
     return jsonify(old_students)
 
 @app.route("/young_students/",methods=['GET']) 

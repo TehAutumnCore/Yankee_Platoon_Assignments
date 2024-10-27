@@ -19,27 +19,6 @@ INSERT INTO students(id,first_name,last_name,age,subject) VALUES(18,Grace,Parker
 INSERT INTO students(id,first_name,last_name,age,subject) VALUES(19,Charles,Bennett,28,2)
 INSERT INTO students(id,first_name,last_name,age,subject) VALUES(20,Sophia,Wright,30,1)
 --
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---
 INSERT INTO subjects(id,subject) VALUES(1,Mathematics)
 INSERT INTO subjects(id,subject) VALUES(2,Science)
 INSERT INTO subjects(id,subject) VALUES(3,English)

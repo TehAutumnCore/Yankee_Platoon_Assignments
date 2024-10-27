@@ -12,7 +12,7 @@ db = SQLAlchemy(app) #looks into the flask server, looks for sql dictionary abov
 
 class Student(db.model): #looks for the class and inherits for the db.model and converts it into a sql data table
     id = db.Column(db.Integer, primary_key = True) # id SERIAL PRIMARY KEY  #DATA MODEL that will represent the model of the object in SQL
-    first_name = db.Column(db.String(50)) #VARCHAR(50)
+    first_name = db.column(db.String(50)) #VARCHAR(50)
     last_name = db.column(db.String(50)) #VARCHAR(50)
     age = db.column(db.Integer) #age INT
     grade = db.column(db.String(1)) #CHAR(1)
