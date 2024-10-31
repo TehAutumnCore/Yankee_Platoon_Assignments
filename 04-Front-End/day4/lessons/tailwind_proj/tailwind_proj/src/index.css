@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .my-class{
+  font-size: 23vmin;
+  font-weight: 100;
+} */
+
+#container{
+  width: 100%;
+  height:50vh;
+}
+
+.box{
+  height:25vmin;
+  width:25vmin;
+  border: solid red 3px
+}
