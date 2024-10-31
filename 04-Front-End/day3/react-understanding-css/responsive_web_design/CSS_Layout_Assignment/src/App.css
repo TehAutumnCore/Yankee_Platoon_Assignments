@@ -1,0 +1,10 @@
+.container{
+
+}
+
+.box{
+  display:inline-block;
+  border: solid block;
+  width: 2px;
+  margin: 10px;
+}

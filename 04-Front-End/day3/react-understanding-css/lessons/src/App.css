@@ -1,0 +1,75 @@
+body{
+  margin:0
+}
+
+/* .anImg{
+  height: 250px;
+  width: 250px;
+  background-color: red;
+}
+
+.floatMeRight{
+  float: left;
+}
+
+.text-block{
+  font-size: 24px;
+  clear: right;
+} */
+
+/* .outer{
+  height: 400px;
+  width: 400px;
+  background-color: black;
+  position: relative;
+}
+
+.middle{
+  height:300px;
+  width:300px;
+  background-color: green;
+}
+
+.inner{
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  position: absolute; /*Looks to for first parent with position relative*/
+
+  
+  /* #the-box: hover{
+    background-color: yellow;
+    /* position: fixed; */
+    /* top: 25px;
+    left: 50px; */
+  }
+
+  a:link{
+    color:green
+  }
+  a:visited{
+    color:red
+  }
+  a:hover{
+    color:cyan
+  }
+  a:active{
+    color:yellow
+  }
+
+  #container{
+    height: 125px;
+    width: 1000px;
+    border: red dashed 5px;
+    overflow-y: scroll; overflow x, overflow y, scroll
+  }
+  
+
+.box {
+  height: 96px;
+  width: 96px;
+  padding: 0px;
+  margin: 10px;
+  border: 2px solid black;
+  display: inline-block;
+} */
