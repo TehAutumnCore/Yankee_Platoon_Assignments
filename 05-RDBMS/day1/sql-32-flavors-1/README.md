@@ -1,3 +1,6 @@
+DRAWSQL: Completed and shared with demi (dont delete)
+https://drawsql.app/teams/franciscos-team-2-1/diagrams/sql-32-flavors-ice-cream-shoppe
+
 # SQL: 32 Flavors Ice Cream Shoppe
 
 The ancient and vaguely magical Ye Olde 32 Flavors Ice Cream Shoppe has had a meltdown. All of their records, which they kept in thick vellum books that looked suspiciously like something a wizard might write their spells in, are ruined.
