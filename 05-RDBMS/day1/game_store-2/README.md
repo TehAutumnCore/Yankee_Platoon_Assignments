@@ -1,0 +1,2 @@
+# Assignment - Game Store II
+## Using what we've covered about creating Tables with SQL, write the SQL queries that will create a Table for Employees, Posters, and Action Figures and load the provided CSV data onto your tables.

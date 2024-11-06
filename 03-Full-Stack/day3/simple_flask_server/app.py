@@ -17,7 +17,7 @@ class Student(db.model):
 class Subject(db.model):
     id = db.Column(db.Integer, primary_key = True)
     subject = db.Column(db.String(50))
-    
+     
 class Teacher(db.model):
     id = db.Column(db.Integer, primary_key = True)
     first_name = db.Column(db.String(50))
