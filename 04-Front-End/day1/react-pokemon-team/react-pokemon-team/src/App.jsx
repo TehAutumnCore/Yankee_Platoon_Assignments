@@ -15,12 +15,24 @@ import PokemonList from './components/PokemonList'
  * render those pokemon in the list
  */
 function App() {
-  const [count, setCount] = useState(0)
+  const fakePokemon=[
+    {name:'Charizard', type: 'fire'},
+    {name:'Pikachu', type: 'electric'},
+    {name:'Ditto', type: 'normal'}
+  ]
 
+  const desiredPokemonTypes = 'normal' //create prop
+  //Get fakePokemons into PokemonList by passing as a prop
   return (
     <>
-      <h1>Hello Pokemon World!</h1>
-      <PokemonList/>
+    <div>
+        <h1>Pokemon App</h1>
+        <PokemonList pokemons={fakePokemon} desiredPokemonTypes = {desiredPokemonTypes}/> 
+        {/* const props={
+            pokemons: fakePokemons,
+            foo: 'hello'
+            }                 */}
+      </div>
     </>
   )
 }
