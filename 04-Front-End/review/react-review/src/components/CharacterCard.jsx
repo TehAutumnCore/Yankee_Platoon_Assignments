@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import App from "../App";
 
 const CharactersPage = () => {
+  const {isFavorite, addFavorite, rmFavorite}
+  const [useNavigate] = 
   const [characters, setCharacters] = useState([]); // array of objects
   const [nextPage, setNextPage] = useState(null);
   const [previousPage, setPreviousPage] = useState(null);
@@ -20,11 +24,11 @@ const CharactersPage = () => {
     getCharacters();
   }, [currentPage]);
 
-  useEffect(() => {
-    console.log('curr',currentPage);
-    console.log('prev',previousPage);
-    console.log('next', nextPage)
-  }, [currentPage, nextPage, previousPage]);
+//   useEffect(() => {
+//     console.log('curr',currentPage);
+//     console.log('prev',previousPage);
+//     console.log('next', nextPage)
+//   }, [currentPage, nextPage, previousPage]);
 
   return (
     <>
@@ -42,6 +46,7 @@ const CharactersPage = () => {
           <div className="card" key={character.id}>
             <img src={character.image} />
             <p>{character.name}</p>
+            <button onClick={()=>Navigate(`/character/${character.id}`)}>See More</button>
           </div>
         ))}
       </div>

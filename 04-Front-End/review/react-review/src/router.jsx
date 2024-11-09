@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage'
 import CharactersPage from './pages/CharactersPage'
 import ErrorPage from './pages/ErrorPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ACharacterPage from './pages/ACharacterPage'
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
             path:'/characters/',
             element: <CharactersPage/>
+        },
+        {
+            path:"/characer/:id", // colon : 
+            element:<ACharacterPage/>
         },
         {
             path: "*",
