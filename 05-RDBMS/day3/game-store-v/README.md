@@ -2,6 +2,7 @@
 
 Dear Developer,
 
+
 Welcome to the SQL Query Challenges! We hope you enjoy putting your SQL skills to the test. Below are 35 scenarios, each requiring a query to retrieve specific information from the provided database schema. Read the scenarios carefully and craft the appropriate SQL queries to fulfill each request.
 
 **Write all your queries within [queries.sql](./store/queries.sql)**
