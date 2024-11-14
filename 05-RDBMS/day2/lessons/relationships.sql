@@ -29,33 +29,35 @@
 
 
 
---one to many RELATIONSHIP because they share a foreign key
--- DROP TABLE IF EXISTS universities CASCADE;
+one to many RELATIONSHIP because they share a foreign key
+DROP TABLE IF EXISTS universities CASCADE;
 
--- CREATE TABLE universities(
---     university_id SERIAL PRIMARY KEY,
---     university_name VARCHAR(70) UNIQUE NOT NULL
--- );
+CREATE TABLE universities(
+    university_id SERIAL PRIMARY KEY,
+    university_name VARCHAR(70) UNIQUE NOT NULL
+);
 
 
--- DROP TABLE IF EXISTS students;
 
--- CREATE TABLE students(
---     student_id SERIAL PRIMARY KEY,
---     student_name VARCHAR(50) NOT NULL,
---     university_id
---     FOREIGN KEY(university_id) REFERENCES universities(university_id)
--- );
 
--- INSERT INTO universities(university_name) VALUES ('CODE PLATOON')
--- INSERT INTO students (student_name, university_id) 
--- VALUES 
--- ('Sam', 1),
--- ('Jesus', 1),
--- ('Hailey', 1),
--- ('Jacob', 1);
+DROP TABLE IF EXISTS students;
 
---SELECT * FROM students JOIN universities ON students.university_id = universities.university_id WHERE UNIVERSITY = 1
+CREATE TABLE students(
+    student_id SERIAL PRIMARY KEY,
+    student_name VARCHAR(50) NOT NULL,
+    university_id
+    FOREIGN KEY(university_id) REFERENCES universities(university_id)
+);
+
+INSERT INTO universities(university_name) VALUES ('CODE PLATOON')
+INSERT INTO students (student_name, university_id) 
+VALUES 
+('Sam', 1),
+('Jesus', 1),
+('Hailey', 1),
+('Jacob', 1);
+
+SELECT * FROM students JOIN universities ON students.university_id = universities.university_id WHERE UNIVERSITY = 1
 
 
 
