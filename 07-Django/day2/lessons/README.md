@@ -69,3 +69,26 @@ blastoise_serialized
 import json
 json_blastoise = json.loads(blastoise_serialized)
 json_blastoise
+
+
+scratch = Move.objects.get(name = 'Scratch')
+scratch
+<Move : 70 20 70>
+ser_scratch = MoveSerializer(scratch)
+ser_scratch
+moveSerializer(<Move> id= name = accuracy =pp=power)
+ser_scratch.data
+{id:  name: }
+serializeMove.is_valid()
+serializedMove.save()
+
+request_data = {"name": ,"accuracy":}
+ser_flame_thrower = MoveSerializer(data=request_data)
+ser_flame_thrower.isvalid()
+
+
+# DJANGO Server
+-python manage.py runserver
+-127.0.0.1:8000/admin   <!-- from urls.py in pokedex_proj-->
+-urls.py    
+-from django.http import HttpResponse

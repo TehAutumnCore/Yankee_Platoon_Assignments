@@ -16,7 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+import math
 
+def square_area_view(request):
+    area_of_square = 2 ** 2
+    return HttpResponse(area_of_square)
+
+def circle_area_view(request):
+    print(request)
+    area_of_circle = math.pi * (2 ** 2)
+    return HttpResponse(area_of_circle)
+
+def triangle_area_view(request):
+    area_of_triangle = (height * base) / 2
+    return HttpResponse(area_of_triangle)
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('squares/', square_area_view),
+    path('circles/', circle_area),
+    path('triangles/height/<int:height>/base/<int:base>', triangle_area_view) #returns 4.0
 ]
