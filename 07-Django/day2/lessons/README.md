@@ -92,3 +92,36 @@ ser_flame_thrower.isvalid()
 -127.0.0.1:8000/admin   <!-- from urls.py in pokedex_proj-->
 -urls.py    
 -from django.http import HttpResponse
+
+create a "view" with 
+    def blah_view(request):
+        pass
+        return HttpResponse(pass)
+
+update urlpatters=[
+    path('admin/', admin.site.urls),
+    path('sameple_endpoint/', func_sample_view)
+]
+
+# Restful API and API Views
+views.py and urls.py 
+django.urls import path, include
+
+in urls.py you create the endpoint(s) and use include to link the main urls.py to the other app.urls.py where youll create all the related endpoints there. 
+
+    This will take place in pokemon_app urls where youll put the related views
+    path('api/v1/pokemon/', include("pokemon_app.urls")),
+
+    This will take place in move_app urls where youll put the related views
+    path('api/v1/moves', include("move_app.urls"))
+
+then create a class that gets all pokemon(objects.all()), then create a class where it recieves just one(objects.get()).
+
+# Converters.py
+views/url
+
+
+# Testing Views
+creating a tests folder
+
+python manage.py test tests

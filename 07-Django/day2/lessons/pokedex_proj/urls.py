@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.http import HttpResponse
 import math
 
@@ -32,9 +32,12 @@ def triangle_area_view(request):
     area_of_triangle = (height * base) / 2
     return HttpResponse(area_of_triangle)
     
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('squares/', square_area_view),
     path('circles/', circle_area),
-    path('triangles/height/<int:height>/base/<int:base>', triangle_area_view) #returns 4.0
+    path('triangles/height/<int:height>/base/<int:base>', triangle_area_view), #returns 4.0
+    path('api/v1/pokemon/', include("pokemon_app.urls")),
+    path('api/v1/moves', include("move_app.urls"))
 ]
