@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core import validators as v
-from .validators import validate_pokemon_name
+from .validators import validate_pokemon_name, validate_pokemon_type
 
 # Create your models here.
 class Pokemon(models.Model):
@@ -11,6 +11,7 @@ class Pokemon(models.Model):
     date_capture = models.DateTimeField(default=timezone.now)
     description = models.TextField(default="Unknown Pokemon", validators=[v.MinLengthValidator(7),v.MaxLengthValidator(150)])
     captured=models.BooleanField(default=False)
+    types = models.CharField(default='normal', validators=[validate_pokemon_type])
     
     def __str__(self):
         return f"{self.name} {'Has been caught' if self.captured else 'Has not been caught'}"

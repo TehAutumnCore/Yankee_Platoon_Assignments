@@ -17,3 +17,11 @@ def validate_pokemon_name(name):
     #     "name has spaces"
     # valid_pokemon_name_has_no_numbers
     #     "name has numbers"
+
+def validate_pokemon_type(type):
+    allowed_types = ['rock','normal','bug','ghost','fire','water','electric','psychic']
+    
+    if value.lower() not in allowed_types:
+        raise ValidationError(f"Invalid type: {Value}. Please choose from {', '.join(allowed_types)}")
+    else:
+        return value

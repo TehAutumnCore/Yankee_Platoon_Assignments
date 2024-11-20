@@ -125,3 +125,30 @@ views/url
 creating a tests folder
 
 python manage.py test tests
+
+# create a new app called api_app
+add the api_app 
+pip freeze > requirements
+create a view for this application and connect the view to the app
+pip install requests
+pip install OAuthlib
+pip install python-env
+touch .env .gitignore
+
+in settings.py of proj
+from dotenv import dotenv_values
+
+env = dotenv_values(".env") #sets where to reference or look for the env info(.env)
+
+<!-- shell -->
+from django.core.management.utils import get_random_secret_key
+new_key = get_random_secret_key()
+new_key
+
+import pprint formats the json into readable format in the console
+python manage.py makemigrations
+python manage.py migrate
+
+<!-- mimicks 3rd party -->
+from unittest.mock import patch
+from rest_framework.test import APIClient
