@@ -179,3 +179,35 @@ Delete - Delete /Pokemon/
     'name':'pika-mouse'
     'list_of_moves' : [1, 2, 3]
 ]
+
+# Django framework AuthToken
+'rest_framework',
+'rest_framework.authtoken',
+
+ ## Installed Apps
+'rest_framework',
+'rest_framework.authtoken',
+ ## InBetween databases and Auth Pass Validators
+ REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
+ ## makemigrations and migrate
+ will create auth tables,
+ in public.auth_user
+ will show columns for id, password, last login etc
+
+  ## Trainer_app
+  in settings: 
+  AUTH_USER_MODEL = 'trainer_app.Trainer'
+  python manage.py makemigrations migrate
+  if error, dropdb and recreate db then makemigrations, migrate again
+
+from rest_framework.authtoken.models import Token #allows to create instance of a token
+from rest_framework.authentication import TokenAuthentication #only people with the token can perform certain views
+from rest_framework.permissions import IsAuthenticated
+
+easy error 
+if not data['email'] or not data['password']:
+    raise ValidationError({"error": "Email and password are required"})
