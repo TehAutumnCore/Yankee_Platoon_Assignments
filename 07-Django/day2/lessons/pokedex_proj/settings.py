@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import dotenv_values
+# from dotenv import dotenv_values
 
-env = dotenv_values(".env")
+# env = dotenv_values(".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+s4uni5jt6kaym31j2r_pcgts7r%c7r*m$%5h62x-3g64ra9rj'
-SECRET_KEY = env.get('DJANGO_SECRET_KEY')
+# SECRET_KEY = env.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'move_app',
     'api_app',
     'rest_framework', #djangorestframework
+    'weather_app'
 ]
 
 MIDDLEWARE = [

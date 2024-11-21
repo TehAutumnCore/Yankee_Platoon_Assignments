@@ -1,0 +1,67 @@
+[
+    {
+      "model": "pokemon_app.pokemon",
+      "pk": 1,
+      "fields": {
+        "name": "Pikachu",
+        "level": 5,
+        "date_encountered": "2015-01-01",
+        "date_captured": "2024-11-15T15:38:34.887Z",
+        "description": "A yellow rat with electricity",
+        "captured": false,
+        "types": "electric"
+      }
+    },
+    {
+      "model": "pokemon_app.pokemon",
+      "pk": 2,
+      "fields": {
+        "name": "Charizard",
+        "level": 1,
+        "date_encountered": "2015-01-01",
+        "date_captured": "2024-11-15T20:13:44.370Z",
+        "description": "Unknown Pokemon",
+        "captured": false,
+        "types": "normal"
+      }
+    },
+    {
+      "model": "pokemon_app.pokemon",
+      "pk": 3,
+      "fields": {
+        "name": "Squirtle",
+        "level": 1,
+        "date_encountered": "2015-01-01",
+        "date_captured": "2024-11-15T20:14:05.289Z",
+        "description": "Unknown Pokemon",
+        "captured": false,
+        "types": "normal"
+      }
+    },
+    {
+      "model": "pokemon_app.pokemon",
+      "pk": 4,
+      "fields": {
+        "name": "Cyndquil",
+        "level": 10,
+        "date_encountered": "2015-01-01",
+        "date_captured": "2024-11-20T16:48:07.381Z",
+        "description": "A ferret with a spicy attitude",
+        "captured": false,
+        "types": "normal"
+      }
+    },
+    {
+      "model": "pokemon_app.pokemon",
+      "pk": 6,
+      "fields": {
+        "name": "Charmander",
+        "level": 22,
+        "date_encountered": "2015-01-01",
+        "date_captured": "2024-11-20T17:30:55.920Z",
+        "description": "A fire type pokemon with fire on his tail",
+        "captured": true,
+        "types": "normal"
+      }
+    }
+    ]

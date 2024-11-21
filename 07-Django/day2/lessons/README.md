@@ -152,3 +152,30 @@ python manage.py migrate
 <!-- mimicks 3rd party -->
 from unittest.mock import patch
 from rest_framework.test import APIClient
+
+# CRUD - based on url path - Network Tab
+Post - Create - /Pokemon/
+Get - Read  /Pokemon/ (all info on it) /moves/ (access the moves of that pokemon)
+Put - Update /Pokemon/ update the info using the body of the request in Thunderclient
+    put > 127.0.0.1:8000/api/v1/pokemon/pikachu/
+    #json- conent
+    {
+        "types":"electric"
+        "description: "A yellow rat with electricity"
+        "moves": "Rock Smash"
+    }
+Delete - Delete /Pokemon/ 
+- can check the db 
+
+
+{
+    "name": "Bite
+    "power": 10
+    "Accuracy": 100
+}
+
+
+[
+    'name':'pika-mouse'
+    'list_of_moves' : [1, 2, 3]
+]

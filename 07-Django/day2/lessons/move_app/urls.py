@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import AllMoves, Single_move
+from .views import AllMoves, SingleMove
 
-urlspatterns = [
-    path('',Allmoves.as_view(), name='all_moves'),
-    path('<str:single_move>', single_move.as_view(),name='single_move')
+urlpatterns = [
+    path('', AllMoves.as_view(), name='all_moves'),
+    path('<str:single_move>/', SingleMove.as_view(), name='single_move')
 ]

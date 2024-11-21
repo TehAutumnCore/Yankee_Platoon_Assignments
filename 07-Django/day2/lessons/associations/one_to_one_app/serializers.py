@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from .models import Person, Profile
 
-class ProfileSerializer(serializers.ModelSerializers):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['person']
+        exclude = ['person']
 
-class PersonSerializer(serializers.ModelSerializers):
+class PersonSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
     class Meta:
         model = Person
-        fields = ['id','name','profile']
+        fields = ['id', 'name', 'profile']

@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 class Person(models.Model):
     name = models.CharField(max_length=100)
-    
-class Profile(models.model):
+
+class Profile(models.Model):
     bio = models.TextField(max_length=255)
     person = models.OneToOneField(Person, on_delete=models.CASCADE)   #table has constaint FOREIGN KEY(person_id) REFERENCES one_to_one_app_person(id)
     

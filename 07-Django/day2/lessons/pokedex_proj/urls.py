@@ -25,21 +25,20 @@ def square_area_view(request):
 
 def circle_area_view(request):
     print(request)
-    area_of_circle = math.pi * (2 ** 2)
-    return HttpResponse(area_of_circle)
+    area_of_a_circle = math.pi * (2 ** 2)
+    return HttpResponse(area_of_a_circle)
 
-def triangle_area_view(request):
+def triangle_area_view(request, height, base):
     area_of_triangle = (height * base) / 2
     return HttpResponse(area_of_triangle)
-    
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('squares/', square_area_view),
-    path('circles/', circle_area),
-    path('triangles/height/<int:height>/base/<int:base>', triangle_area_view), #returns 4.0
+    # path('squares/', square_area_view),
+    # path('circles/', circle_area_view),
+    # path('triangle/height/<int:height>/base/<int:base>', triangle_area_view),
     path('api/v1/pokemon/', include("pokemon_app.urls")),
-    path('api/v1/moves/', include("move_app.urls")),
-    path('api/v1/noun/', include("app_app.urls")),
-    path('api/v1/weather', include("weather_app.urls"))
+    path('api/v1/moves/', include('move_app.urls')),
+    path('api/v1/noun/', include('api_app.urls')),
+    path('api/v1/weather/', include('weather_app.urls'))
 ]
