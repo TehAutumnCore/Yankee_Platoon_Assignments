@@ -7,3 +7,6 @@ class Trainer(AbstractUser):
     USERNAME_FIELD = 'email'
     
     REQUIRED_FIELDS = ['date_of_birth', 'city']
+    
+    
+
