@@ -43,16 +43,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    'user_app',
+    #apps
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'GameManagementProj.urls'
@@ -84,6 +91,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'game_management_personal_proj_db',
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES' : [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
 
 
@@ -127,3 +140,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True #Allows all origins(domains) to access your API
+CORS_ALLOW_CREDENTIALS = True #Allows cookies to be included in cross-origin requests
+
+AUTH_USER_MODEL = 'user_app.User' #Tells django project to utilize the user model

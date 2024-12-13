@@ -15,8 +15,9 @@
 
 ### Installs
 - Django
-- Psychopg[binary]
-- djangorestframework
+- Psychopg[binary] (allows django to talk to postgresql)
+- djangorestframework (allows use of Response, APIView, TokenAuthentication)
+- django-cors-headers (allows backend to communicate with front end)
 - python-dotenv
 - 
 
@@ -33,7 +34,7 @@ python manage.py shell
 
  ### Installs
  - axios
- - react-router-dom
+ - react-router-dom 
  - bootstrap/tailwind?
 
 
