@@ -19,6 +19,7 @@ env = dotenv_values(".env")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.get("DJANGO_SECRET_KEY")
+STEAM_WEB_API_KEY = env.get("STEAM_WEB_API_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +48,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'user_app',
-    #apps
+    'game_app',
+    'library_app',
+    'reviews_app'
 ]
 
 MIDDLEWARE = [
