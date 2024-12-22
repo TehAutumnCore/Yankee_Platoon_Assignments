@@ -1,7 +1,7 @@
 import HomePage from "./pages/Homepage.jsx";
 import LibraryPage from "./pages/LibraryPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
-import AboutMePage from "./pages/AboutMePage.jsx";
+import GameDetailsPage from "./pages/GameDetailsPage.jsx";
 import LogInPage from "./pages/LogInPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
@@ -23,12 +23,12 @@ const router = createBrowserRouter([
                 element:<LibraryPage/>,
             },
             {
-                path: "profile/",
-                element:<ProfilePage/>,
+                path: "game/:id",
+                element: <GameDetailsPage />,
             },
             {
-                path: "aboutme/",
-                element:<AboutMePage/>,
+                path: "profile/",
+                element:<ProfilePage/>,
             },
             {
                 path: "login/",

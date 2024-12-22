@@ -23,6 +23,7 @@ class GameViewAll(APIView):
     # "description": "Game Description",
     # "genre": "Game Genre",
     # "price": 59.99,
+    # "sale": False,
     # "image_url": "https://example.com/image.jpg",
     # "steam_app_id": "123456"
     # }
@@ -45,6 +46,7 @@ class GameViewUpdate(APIView):
     # {
     # "description": "Updated game description",
     # "price": 49.99
+    # "sake": True
     # }
     def put(self, request, id):
          game = get_object_or_404(Game, pk=id)
