@@ -1,50 +1,64 @@
-import HomePage from "./pages/Homepage.jsx";
-import LibraryPage from "./pages/LibraryPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
-import GameDetailsPage from "./pages/GameDetailsPage.jsx";
-import LogInPage from "./pages/LogInPage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
-import App from "./App"
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import App from "./App";
+import HomePage from "./pages/HomePage";
+import LibraryPage from "./pages/LibraryPage";
+import ProfilePage from "./pages/ProfilePage";
+import AboutMePage from "./pages/AboutMePage";
+import GameDetailsPage from "./pages/GameDetailsPage";
+import LogInPage from "./pages/LogInPage";
+import SignUpPage from "./pages/SignUpPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ErrorPage from "./pages/ErrorPage";
+import AuthRequired from "./components/AuthRequired";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App/>,
+        element: <App />,
         children: [
             {
                 index: true,
-                element: <HomePage/>
+                element: <HomePage />
             },
             {
                 path: "library/",
-                element:<LibraryPage/>,
+                element: (
+                    <AuthRequired>
+                        <LibraryPage />
+                    </AuthRequired>
+                ),
+            },
+            {
+                path: "profile/",
+                element: (
+                    <AuthRequired>
+                        <ProfilePage />
+                    </AuthRequired>
+                ),
             },
             {
                 path: "game/:id",
                 element: <GameDetailsPage />,
             },
             {
-                path: "profile/",
-                element:<ProfilePage/>,
+                path: "aboutme/",
+                element: <AboutMePage />,
             },
             {
                 path: "login/",
-                element:<LogInPage/>,
+                element: <LogInPage />,
             },
             {
                 path: "signup/",
-                element:<SignUpPage/>,
+                element: <SignUpPage />,
             },
             {
                 path: "*",
-                element:<NotFoundPage/>,
+                element: <NotFoundPage />,
             },
         ],
-        errorElement: <ErrorPage/>
+        errorElement: <ErrorPage />
     }
-])
+]);
 
-export default router
+export default router;

@@ -1,20 +1,17 @@
-// import { useState } from 'react'
-import './App.css'
-import {Outlet} from "react-router-dom"
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
+import { Outlet } from 'react-router-dom';
+import NavBar from './components/layout/NavBar';
+import Footer from './components/layout/Footer';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <NavBar/>
-      <Outlet/>
-      {/* All Pages here such as <Homepage/>, <AboutMePage/>, <LibraryPage/> etc  */}
-      <Footer/>
-    </>
-  )
+    return (
+        <div className="flex flex-col min-h-screen bg-gray-900">
+            <NavBar />
+            <main className="flex-grow">
+                <Outlet />
+            </main>
+            <Footer />
+        </div>
+    );
 }
 
-export default App
+export default App;

@@ -1,8 +1,11 @@
-
 const Footer = () => {
-    return(
-        <h1>insert Footer Design and Look some up and place here</h1>
-    )
-}
+    return (
+        <footer className="bg-gray-800 text-white p-4 mt-auto">
+            <div className="container mx-auto text-center">
+                <p>© 2024 Game Management. All rights reserved.</p>
+            </div>
+        </footer>
+    );
+};
 
-export default Footer
+export default Footer;
