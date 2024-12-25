@@ -11,13 +11,16 @@ const ProfilePage = () => {
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
+                console.log('Fetching profile with token:', token);
                 const response = await apiService.getUserInfo(token);
+                console.log('Profile response:', response);
                 const data = await response.json();
+                console.log('Profile data:', data);
                 setProfileData(data);
             } catch (err) {
                 console.error('Error fetching profile:', err);
@@ -39,12 +42,20 @@ const ProfilePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccessMessage('');
         try {
+            console.log('Sending update with data:', profileData);
             const response = await apiService.updateUserInfo(token, profileData);
+            console.log('Update response status:', response.status);
+            
+            const data = await response.json();
+            console.log('Update response data:', data);
+
             if (response.ok) {
-                setMessage('Profile updated successfully');
+                setSuccessMessage('Profile updated successfully');
             } else {
-                setError('Failed to update profile');
+                setError(data.error || 'Failed to update profile');
             }
         } catch (err) {
             console.error('Error updating profile:', err);
@@ -65,48 +76,67 @@ const ProfilePage = () => {
             <div className="max-w-md mx-auto bg-gray-800 rounded-lg shadow-xl p-8">
                 <h1 className="text-3xl font-bold text-white mb-6">Profile</h1>
                 
-                {error && <p className="text-red-500 mb-4">{error}</p>}
-                {message && <p className="text-green-500 mb-4">{message}</p>}
+                {error && (
+                    <div className="bg-red-500 text-white p-3 rounded mb-4">
+                        {error}
+                    </div>
+                )}
                 
+                {successMessage && (
+                    <div className="bg-green-500 text-white p-3 rounded mb-4">
+                        {successMessage}
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-white mb-2">Email</label>
-                        <input 
-                            type="email"
-                            name="email"
-                            value={profileData.email}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-700 text-white"
-                            disabled
-                        />
+                    <div className="space-y-4">
+                        <div>
+                            <label htmlFor="email" className="block text-white mb-2">
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                value={profileData.email}
+                                className="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                                disabled
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="display_name" className="block text-white mb-2">
+                                Display Name
+                            </label>
+                            <input
+                                id="display_name"
+                                name="display_name"
+                                type="text"
+                                value={profileData.display_name}
+                                onChange={handleChange}
+                                className="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="age" className="block text-white mb-2">
+                                Age
+                            </label>
+                            <input
+                                id="age"
+                                name="age"
+                                type="number"
+                                min="18"
+                                value={profileData.age}
+                                onChange={handleChange}
+                                className="w-full p-2 rounded bg-gray-700 text-white border border-gray-600"
+                            />
+                        </div>
                     </div>
 
-                    <div className="mb-4">
-                        <label className="block text-white mb-2">Display Name</label>
-                        <input 
-                            type="text"
-                            name="display_name"
-                            value={profileData.display_name}
-                            onChange={handleChange}
-                            className="w-full p-2 rounded bg-gray-700 text-white"
-                        />
-                    </div>
-
-                    <div className="mb-6">
-                        <label className="block text-white mb-2">Age</label>
-                        <input 
-                            type="number"
-                            name="age"
-                            value={profileData.age}
-                            onChange={handleChange}
-                            min="18"
-                            className="w-full p-2 rounded bg-gray-700 text-white"
-                        />
-                    </div>
-
-                    <button 
+                    <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+                        className="mt-6 w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
                     >
                         Update Profile
                     </button>

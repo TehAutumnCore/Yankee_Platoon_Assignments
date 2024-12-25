@@ -12,6 +12,7 @@ const LogInPage = () => {
         password: ''
     });
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState(location.state?.message || '');
     const [loading, setLoading] = useState(false);
 
     // Get the page user was trying to visit
@@ -27,6 +28,7 @@ const LogInPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        setSuccessMessage('');
         setLoading(true);
 
         try {
@@ -36,8 +38,8 @@ const LogInPage = () => {
             } else {
                 setError(result.error || 'Login failed');
             }
-        } catch (error) {  // Change err to error
-            console.error('Login error:', error);  // Add this line
+        } catch (error) {
+            console.error('Login error:', error);
             setError('An error occurred during login');
         } finally {
             setLoading(false);
@@ -52,6 +54,12 @@ const LogInPage = () => {
                         Sign in to your account
                     </h2>
                 </div>
+                
+                {successMessage && (
+                    <div className="bg-green-500 text-white p-3 rounded">
+                        {successMessage}
+                    </div>
+                )}
                 
                 {error && (
                     <div className="bg-red-500 text-white p-3 rounded">

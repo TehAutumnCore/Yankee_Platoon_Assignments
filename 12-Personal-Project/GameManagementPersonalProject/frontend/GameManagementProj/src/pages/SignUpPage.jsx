@@ -30,10 +30,11 @@ const SignUpPage = () => {
             const data = await response.json();
 
             if (response.ok) {
-                navigate('/login');
+                navigate('/login', { 
+                    state: { message: 'Registration successful! Please log in.' }
+                });
             } else {
-                console.log('Registration response:', data);  // Add this line
-                setError(data.message || Object.values(data)[0] || 'Registration failed');
+                setError(data.error || 'Registration failed');
             }
         } catch (error) {
             console.error('Registration error:', error);

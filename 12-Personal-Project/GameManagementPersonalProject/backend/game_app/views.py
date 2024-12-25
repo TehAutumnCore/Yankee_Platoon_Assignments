@@ -1,20 +1,37 @@
 from django.shortcuts import render
-from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND
 from .models import Game
 from .serializers import GameSerializer
 from django.shortcuts import get_object_or_404
-
-# Create your views here.
+from .steam_api import get_action_games  # Add this import at the top
 
 class GameViewAll(APIView):
-    # GET 127.0.0.1:8000/api/v1/games/
-    def get(self,request): #fetch all games, serialize the queryset, return serialized data
-        all_games = Game.objects.all()
-        serializer = GameSerializer(all_games, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
+    def get(self, request):
+        try:
+            print("Starting game fetch")
+            steam_games = get_action_games()
+            print(f"Got {len(steam_games)} games from Steam")
+            
+            games = []
+            for game_data in steam_games:
+                print(f"Processing game: {game_data}")
+                game, created = Game.objects.update_or_create(
+                    steam_app_id=game_data['steam_app_id'],
+                    defaults=game_data
+                )
+                games.append(game)
+            
+            print(f"Total games saved: {len(games)}")
+            serializer = GameSerializer(games, many=True)
+            return Response(serializer.data, status=HTTP_200_OK)
+        except Exception as e:
+            print(f"Error in GameViewAll: {str(e)}")
+            return Response(
+                {"error": "Failed to fetch games"}, 
+                status=HTTP_400_BAD_REQUEST
+            )
     
     
     # POST 127.0.0.1:8000/api/v1/games/
