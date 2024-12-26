@@ -1,105 +1,142 @@
-# Documentation
+Here's a comprehensive README.md for your Game Management Project:
+markdownCopy# Game Management Project
 
-Overview: 
-A Netflix UI meets Steam and Twitch for gamers to discover, organize, and manage their game library. Users can browse through games categorized by genre or popularity using the steam API to view game details with relevant information such as the image, description, release date, developer, publisher price and will show relevant live streams of that game using the Twitch API. Users will also have a personalized profile where they can organize their game library and leave reviews
+A fullstack web application for managing video games, built with Django REST Framework and React. Users can browse games, manage their library, write reviews, and more.
 
-## Backend
-- Run Server: python manage.py runserver
-### Design Links
-- TLDRAW: https://www.tldraw.com/r/yqfLU5tQwFDD8CLtt-Yf9?d=v-3921.-1404.4834.2500.page
-- Google Doc: https://docs.google.com/document/d/1nveAsm-VF83PyCnX_b5QLmactWHrVh3T-Ccsy8QkR6c/edit?tab=t.0
-- Draw SQL:https://drawsql.app/teams/franciscos-team-2-1/diagrams/full-stack-personal-project-game-inventory-management-system
+## Features
 
-### API Integration
-- Steam Web API Documentation: https://steamcommunity.com/dev
-- game(steam): https://store.steampowered.com/app/730/CounterStrike_2/
-- Twitch API Documentation: https://dev.twitch.tv/docs/api/
-- game(twitch): https://www.twitch.tv/directory/category/counter-strike
+### User Management
+- User authentication with email and password
+- User profiles with display names
+- Protected routes for authenticated users
 
-### Installs
+### Game Features
+- Browse games with details (title, description, price, genre)
+- View game details including Steam store links
+- Dynamic game carousels on homepage
+- Game filtering by genre
+
+### Library Management
+- Add games to personal library
+- Remove games from library
+- View all games in library
+- Library status persistence
+
+### Review System
+- Write reviews for games
+- Rate games (1-5 stars)
+- Delete own reviews
+- View all reviews for a game
+
+## Technologies Used
+
+### Backend
 - Django
-- Psychopg[binary] (allows django to talk to postgresql)
-- djangorestframework (allows use of Response, APIView, TokenAuthentication)
-- django-cors-headers (allows backend to communicate with front end)
-- python-dotenv
-- requests
-- requests_oauthlib
+- Django REST Framework
+- PostgreSQL
+- Token Authentication
 
-## API Keys IN .ENV
-### How to get Django secret key: 
-<!-- Django_Secret_key(.env) -->
-python manage.py shell
-- DJANGO_SECRET_KEY 
- from django.core.management.utils import get_random_secret_key
- new_key = get_random_secret_key()
- new_key
-- STEAM_WEB_API_KEY
+### Frontend
+- React
+- React Router DOM
+- Tailwind CSS
+- Context API for state management
 
+## Installation
 
-# Applications
+### Backend Setup
+1. Clone the repository
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
-## Users App
-This application will handle the User authentication and account management
-### Features 
-- User Registration
-- Login/LogOut
-- Token Based Authentication
-- \user Profiles (TBD)
-- \Relationship with user-owned games and reviews (TBD)
+Install dependencies:
 
+bashCopypip install -r requirements.txt
 
-## Game App
-- CRUD for games (ability to create, update, and delete custom game entries)
-- Game details, including title description images, videos and price
-- Categorization of games by genre popularity or release date
-- Integration with the Twitch API to display live streams related to games
-- search and filter functionality for games
+Set up PostgreSQL database
+Create a .env file with necessary environment variables
+Run migrations:
 
-## Library App
-- CRUD for user game Libraries( add, remove, and update, and delete games in a user's library)
-- Automatically import games from a public steam library? (TBD)
-- Categorize games in the library by genre, completion status, or other criteria
--Manage relationships between users and their games (many to many relationship)
+bashCopypython manage.py migrate
 
+Start the server:
 
-## Reviews App 
-- CRUD for user reviews (create,read,update, delete)
--user can leave a review or rating for a game
-- display all reviews for a specific game
-- filter reviews by user or rating score
-- Associate reviews with users and games 
+bashCopypython manage.py runserver
+Frontend Setup
 
+Navigate to the frontend directory:
 
+bashCopycd frontend
 
+Install dependencies:
 
+bashCopynpm install
 
+Start the development server:
 
+bashCopynpm run dev
+API Endpoints
+Authentication
 
+POST /api/v1/users/signup/ - Register new user
+POST /api/v1/users/login/ - Login user
+POST /api/v1/users/logout/ - Logout user
 
-------------------------------------------------------------------------------------------------------------------------------
+Games
 
- ## Frontend
- - Run application: npm run dev
+GET /api/v1/games/ - List all games
+GET /api/v1/games/{id}/ - Get game details
+POST /api/v1/games/ - Add new game
+PUT /api/v1/games/{id}/update/ - Update game
+DELETE /api/v1/games/{id}/delete/ - Delete game
 
- ### Installs
- - axios
- - react-router-dom 
- - bootstrap/tailwind?
+Library
 
+GET /api/v1/library/ - Get user's library
+POST /api/v1/library/ - Add game to library
+DELETE /api/v1/library/{id}/delete/ - Remove game from library
 
+Reviews
 
--link the backend to front end
+GET /api/v1/reviews/game/{id}/ - Get reviews for a game
+POST /api/v1/reviews/game/{id}/ - Create review
+DELETE /api/v1/reviews/{id}/ - Delete review
 
+Future Enhancements
 
-Token/UserAuthentication is today's goal:
- https://github.com/Code-Platoon-Assignments/Django_auth 
- https://github.com/Code-Platoon-Curriculum/curriculum/tree/main/07-Django/CheatSheets
- https://github.com/Code-Platoon-Curriculum/yankee_demos_and_notes/blob/main/07-Django/8-review/user_app/views.py
- Full Stack Auth: https://www.youtube.com/watch?v=19LB0mkCgfI&list=PLu0CiQ7bzwES91fzg7uQLWTvW1upYUeru&index=1
+Steam API integration for real-time game data
+Twitch API integration for game streams
+Advanced search and filtering options
+Social features (friends, recommendations)
+Game ratings aggregation
+Price tracking and sale notifications
 
+Contributing
 
+Fork the repository
+Create your feature branch (git checkout -b feature/AmazingFeature)
+Commit your changes (git commit -m 'Add some AmazingFeature')
+Push to the branch (git push origin feature/AmazingFeature)
+Open a Pull Request
 
-# Figma
- - https://www.figma.com/design/xUBx7Si5GxCRa4Bje8XWar/Game-Management-Proj?node-id=0-1&p=f&t=24nmK5cvGzijor7S-0
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+Acknowledgments
 
-Plugin - Builder.io 
+Steam API for game data
+Tailwind CSS for styling
+React community for component libraries
+
+Copy
+This README provides:
+- Project overview
+- Feature list
+- Tech stack details
+- Installation instructions
+- API endpoint documentation
+- Future enhancement plans
+- Contributing guidelines
+
+Would you like me to expand on any section or add additional information?
