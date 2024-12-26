@@ -7,57 +7,46 @@ from .serializers import ReviewSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-# Create your views here.
 class ReviewViewAll(APIView):
-    permission_classes = [IsAuthenticated] # Only authenticated users can access
+    permission_classes = [IsAuthenticated]
     
-    # GET 127.0.0.1:8000/api/v1/reviews/
-    def get(self, request):
-        # Get all reviews by the user
-        user_reviews = Review.objects.filter(user=request.user)
-        serializer = ReviewSerializer(user_reviews, many=True)
+    def get(self, request, game_id):
+        reviews = Review.objects.filter(game_id=game_id)
+        serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
     
-    # POST 127.0.0.1:8000/api/v1/reviews/
-    # {
-    # "game": 1,  # game id
-    # "review_text": "Great game!",
-    # "rating": 5
-    # }
-    def post(self, request):
-        # Add the current user to the data before serializing
-        data = request.data.copy()
-        data['user'] = request.user.id
+    def post(self, request, game_id):
+        data = {
+            'user': request.user.id,
+            'game': game_id,  # Make sure game_id is being passed
+            'review_text': request.data.get('review_text'),
+            'rating': request.data.get('rating')
+        }
         
-        serializer = ReviewSerializer(data=data)
+        print("Review data:", data)  # Debug print
+        
+        serializer = ReviewSerializer(data=data, context={'game_id': game_id})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
+        
+        print("Serializer errors:", serializer.errors)  # Debug print
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
-class ReviewViewUpdate(APIView):
+class ReviewViewDetail(APIView):
     permission_classes = [IsAuthenticated]
     
-    # PUT 127.0.0.1:8000/api/v1/reviews/{id}/update/
-    # {
-    # "review_text": "Updated review text",
-    # "rating": 4
-    # }
     def put(self, request, id):
-        # Ensure user can only update their own reviews
-        review = get_object_or_404(Review, pk=id, user=request.user)
+        # Update a specific review
+        review = get_object_or_404(Review, id=id, user=request.user)
         serializer = ReviewSerializer(review, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=HTTP_200_OK)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-
-class ReviewViewDelete(APIView):
-    permission_classes = [IsAuthenticated]
     
-    # DELETE 127.0.0.1:8000/api/v1/reviews/{id}/delete/
     def delete(self, request, id):
-        # Ensure user can only delete their own reviews
-        review = get_object_or_404(Review, pk=id, user=request.user)
+        # Delete a specific review
+        review = get_object_or_404(Review, id=id, user=request.user)
         review.delete()
         return Response(status=HTTP_204_NO_CONTENT)

@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/v1/users/',include('user_app.urls')),
     path('api/v1/games/',include('game_app.urls')),
     path('api/v1/library/',include('library_app.urls')),
-    path('api/v1/reviews/',include('reviews_app.urls'))
+    path('api/v1/reviews/', include('reviews_app.urls'))
 ]
