@@ -1,7 +1,29 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { apiService } from '../services/api';
 
-const GameCard = ({ game }) => {
+const GameCard = ({ game, inLibrary }) => {
+    const { token, isAuthenticated } = useAuth();
+    const [removing, setRemoving] = useState(false);
+
+    const handleRemoveFromLibrary = async () => {
+        if (!isAuthenticated) return;
+
+        setRemoving(true);
+        try {
+            const response = await apiService.removeFromLibrary(game.id, token);
+            if (response.ok) {
+                window.location.reload(); // Refresh the library page
+            }
+        } catch (err) {
+            console.error('Error removing from library:', err);
+        } finally {
+            setRemoving(false);
+        }
+    };
+
     return (
         <div className="w-64 bg-gray-800 rounded-lg overflow-hidden shadow-lg">
             <img 
@@ -20,12 +42,23 @@ const GameCard = ({ game }) => {
                         </span>
                     )}
                 </div>
-                <Link 
-                    to={`/game/${game.id}`}
-                    className="mt-4 block bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700"
-                >
-                    View Details
-                </Link>
+                <div className="mt-4 flex flex-col gap-2">
+                    <Link 
+                        to={`/game/${game.id}`}
+                        className="block bg-blue-600 text-white text-center px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                        View Details
+                    </Link>
+                    {inLibrary && (
+                        <button 
+                            onClick={handleRemoveFromLibrary}
+                            disabled={removing}
+                            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 disabled:bg-gray-500"
+                        >
+                            {removing ? 'Removing...' : 'Remove from Library'}
+                        </button>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -39,7 +72,12 @@ GameCard.propTypes = {
         price: PropTypes.number,
         sale: PropTypes.bool,
         image_url: PropTypes.string,
-    }).isRequired
+    }).isRequired,
+    inLibrary: PropTypes.bool
+};
+
+GameCard.defaultProps = {
+    inLibrary: false
 };
 
 export default GameCard;

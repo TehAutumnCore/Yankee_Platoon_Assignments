@@ -1,7 +1,6 @@
 const API_URL = 'http://localhost:8000/api/v1';
 
 export const apiService = {
-    // Auth endpoints
     login: (credentials) => fetch(`${API_URL}/users/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -14,7 +13,6 @@ export const apiService = {
         body: JSON.stringify(userData)
     }),
 
-    // User endpoints
     getUserInfo: (token) => fetch(`${API_URL}/users/info/`, {
         headers: {
             'Authorization': `Token ${token}`
@@ -33,12 +31,10 @@ export const apiService = {
         })
     }),
 
-    // Game endpoints
     getAllGames: () => fetch(`${API_URL}/games/`),
-    
+
     getGameById: (id) => fetch(`${API_URL}/games/${id}/`),
 
-    // Library endpoints
     getUserLibrary: (token) => fetch(`${API_URL}/library/`, {
         headers: { 
             'Authorization': `Token ${token}` 
@@ -51,7 +47,9 @@ export const apiService = {
             'Content-Type': 'application/json',
             'Authorization': `Token ${token}`
         },
-        body: JSON.stringify({ game: gameId })
+        body: JSON.stringify({ 
+            game: parseInt(gameId) 
+        })
     }),
 
     removeFromLibrary: (gameId, token) => fetch(`${API_URL}/library/${gameId}/delete/`, {
@@ -61,7 +59,6 @@ export const apiService = {
         }
     }),
 
-    // Review endpoints
     getGameReviews: (gameId, token) => fetch(`${API_URL}/reviews/game/${gameId}/`, {
         headers: {
             'Authorization': `Token ${token}`

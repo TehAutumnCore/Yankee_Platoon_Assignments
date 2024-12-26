@@ -35,31 +35,26 @@ class SignUp(APIView):
 
 class LogIn(APIView):
     def post(self, request):
-        try:
-            email = request.data.get('email')
-            password = request.data.get('password')
-
-            user = authenticate(username=email, password=password)
-            if user:
-                token, created = Token.objects.get_or_create(user=user)
-                return Response(
-                    {'token': token.key,
-                    'user': {
-                        'id': user.id,
-                        'email': user.email,
-                        'display_name': user.display_name
-                    }},
-                    status=HTTP_200_OK
-                )
-            return Response(
-                {'error': 'Invalid Credentials'}, 
-                status=HTTP_400_BAD_REQUEST
-            )
-        except Exception as e:
-            return Response(
-                {'error': str(e)},
-                status=HTTP_400_BAD_REQUEST
-            )
+        email = request.data.get('email')
+        password = request.data.get('password')
+        
+        user = authenticate(username=email, password=password)
+        
+        if user:
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({
+                'token': token.key,
+                'user': {
+                    'id': user.id,
+                    'email': user.email,
+                    'display_name': user.display_name  # Make sure this field exists
+                }
+            })
+        
+        return Response(
+            {'error': 'Invalid credentials'},
+            status=HTTP_400_BAD_REQUEST
+        )
 
 class LogOut(APIView):
     authentication_classes = [TokenAuthentication]

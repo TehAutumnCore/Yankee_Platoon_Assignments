@@ -8,9 +8,8 @@ class Library(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        # Ensure a user can't add the same game twice
-        unique_together = ['user', 'game']
         verbose_name_plural = 'libraries'
+        unique_together = ['user', 'game']
 
     def __str__(self):
-        return f"{self.user.email}'s library - {self.game.title}"
+        return f"{self.user.display_name}'s library - {self.game.title}"

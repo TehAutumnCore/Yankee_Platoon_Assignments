@@ -13,7 +13,7 @@ const NavBar = () => {
                 <div className="flex gap-4 items-center">
                     {isAuthenticated ? (
                         <>
-                            <span className="text-gray-300">Welcome, {user?.email}</span>
+                            <span className="text-gray-300">Welcome, {user?.display_name}</span>
                             <Link to="/library" className="text-white hover:text-gray-300">
                                 Library
                             </Link>

@@ -1,17 +1,17 @@
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
 from .models import Library
 from game_app.serializers import GameSerializer
+from game_app.models import Game
 
-class LibrarySerializer(ModelSerializer):
-    game = GameSerializer(read_only=True)  # Add this line to include game details
+class LibrarySerializer(serializers.ModelSerializer):
+    game = GameSerializer(read_only=True)
 
     class Meta:
         model = Library
-        fields = '__all__'
-        read_only_fields = ('id',)
-    
-    def validate(self, data):
-        if not data.get('user') or not data.get('game'):
-            raise serializers.ValidationError("Both user and game are required")
-        return data
+        fields = ['id', 'user', 'game', 'added_at']
+        read_only_fields = ['added_at']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['game'] = GameSerializer(instance.game).data
+        return representation

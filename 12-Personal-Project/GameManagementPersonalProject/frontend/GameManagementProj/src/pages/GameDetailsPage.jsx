@@ -72,7 +72,7 @@ const GameDetailsPage = () => {
             setLibraryMessage('Please log in to add games to your library');
             return;
         }
-
+    
         setAddingToLibrary(true);
         try {
             if (isInLibrary) {
@@ -80,12 +80,27 @@ const GameDetailsPage = () => {
                 if (response.ok) {
                     setIsInLibrary(false);
                     setLibraryMessage('Game removed from library!');
+                } else {
+                    const data = await response.json();
+                    console.error('Remove from library failed:', data);
+                    setLibraryMessage('Failed to remove from library');
                 }
             } else {
+                console.log('Adding game to library. Game ID:', game.id);
+                const payload = { game: game.id };
+                console.log('Request payload:', payload);
+                
                 const response = await apiService.addToLibrary(game.id, token);
+                console.log('Response status:', response.status);
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+                
                 if (response.ok) {
                     setIsInLibrary(true);
                     setLibraryMessage('Game added to library!');
+                } else {
+                    setLibraryMessage(data.error || 'Failed to add to library');
                 }
             }
         } catch (err) {
